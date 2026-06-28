@@ -9,10 +9,16 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ArchitectureRouteImport } from './routes/architecture'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CapabilitiesIndexRouteImport } from './routes/capabilities.index'
 import { Route as CapabilitiesSlugRouteImport } from './routes/capabilities.$slug'
 
+const ArchitectureRoute = ArchitectureRouteImport.update({
+  id: '/architecture',
+  path: '/architecture',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -31,36 +37,52 @@ const CapabilitiesSlugRoute = CapabilitiesSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/architecture': typeof ArchitectureRoute
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
   '/capabilities/': typeof CapabilitiesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/architecture': typeof ArchitectureRoute
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
   '/capabilities': typeof CapabilitiesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/architecture': typeof ArchitectureRoute
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
   '/capabilities/': typeof CapabilitiesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/capabilities/$slug' | '/capabilities/'
+  fullPaths: '/' | '/architecture' | '/capabilities/$slug' | '/capabilities/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/capabilities/$slug' | '/capabilities'
-  id: '__root__' | '/' | '/capabilities/$slug' | '/capabilities/'
+  to: '/' | '/architecture' | '/capabilities/$slug' | '/capabilities'
+  id:
+    | '__root__'
+    | '/'
+    | '/architecture'
+    | '/capabilities/$slug'
+    | '/capabilities/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ArchitectureRoute: typeof ArchitectureRoute
   CapabilitiesSlugRoute: typeof CapabilitiesSlugRoute
   CapabilitiesIndexRoute: typeof CapabilitiesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/architecture': {
+      id: '/architecture'
+      path: '/architecture'
+      fullPath: '/architecture'
+      preLoaderRoute: typeof ArchitectureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -87,6 +109,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ArchitectureRoute: ArchitectureRoute,
   CapabilitiesSlugRoute: CapabilitiesSlugRoute,
   CapabilitiesIndexRoute: CapabilitiesIndexRoute,
 }
