@@ -15,6 +15,7 @@ import { Route as OntologyRouteImport } from './routes/ontology'
 import { Route as KnowledgePlatformRouteImport } from './routes/knowledge-platform'
 import { Route as KnowledgeGraphRouteImport } from './routes/knowledge-graph'
 import { Route as EngineeringStandardsRouteImport } from './routes/engineering-standards'
+import { Route as DocsRouteImport } from './routes/docs'
 import { Route as DeveloperPlatformRouteImport } from './routes/developer-platform'
 import { Route as ArchitectureRouteImport } from './routes/architecture'
 import { Route as AiPlatformRouteImport } from './routes/ai-platform'
@@ -51,6 +52,11 @@ const KnowledgeGraphRoute = KnowledgeGraphRouteImport.update({
 const EngineeringStandardsRoute = EngineeringStandardsRouteImport.update({
   id: '/engineering-standards',
   path: '/engineering-standards',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DocsRoute = DocsRouteImport.update({
+  id: '/docs',
+  path: '/docs',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DeveloperPlatformRoute = DeveloperPlatformRouteImport.update({
@@ -95,6 +101,7 @@ export interface FileRoutesByFullPath {
   '/ai-platform': typeof AiPlatformRoute
   '/architecture': typeof ArchitectureRoute
   '/developer-platform': typeof DeveloperPlatformRoute
+  '/docs': typeof DocsRoute
   '/engineering-standards': typeof EngineeringStandardsRoute
   '/knowledge-graph': typeof KnowledgeGraphRoute
   '/knowledge-platform': typeof KnowledgePlatformRoute
@@ -110,6 +117,7 @@ export interface FileRoutesByTo {
   '/ai-platform': typeof AiPlatformRoute
   '/architecture': typeof ArchitectureRoute
   '/developer-platform': typeof DeveloperPlatformRoute
+  '/docs': typeof DocsRoute
   '/engineering-standards': typeof EngineeringStandardsRoute
   '/knowledge-graph': typeof KnowledgeGraphRoute
   '/knowledge-platform': typeof KnowledgePlatformRoute
@@ -126,6 +134,7 @@ export interface FileRoutesById {
   '/ai-platform': typeof AiPlatformRoute
   '/architecture': typeof ArchitectureRoute
   '/developer-platform': typeof DeveloperPlatformRoute
+  '/docs': typeof DocsRoute
   '/engineering-standards': typeof EngineeringStandardsRoute
   '/knowledge-graph': typeof KnowledgeGraphRoute
   '/knowledge-platform': typeof KnowledgePlatformRoute
@@ -143,6 +152,7 @@ export interface FileRouteTypes {
     | '/ai-platform'
     | '/architecture'
     | '/developer-platform'
+    | '/docs'
     | '/engineering-standards'
     | '/knowledge-graph'
     | '/knowledge-platform'
@@ -158,6 +168,7 @@ export interface FileRouteTypes {
     | '/ai-platform'
     | '/architecture'
     | '/developer-platform'
+    | '/docs'
     | '/engineering-standards'
     | '/knowledge-graph'
     | '/knowledge-platform'
@@ -173,6 +184,7 @@ export interface FileRouteTypes {
     | '/ai-platform'
     | '/architecture'
     | '/developer-platform'
+    | '/docs'
     | '/engineering-standards'
     | '/knowledge-graph'
     | '/knowledge-platform'
@@ -189,6 +201,7 @@ export interface RootRouteChildren {
   AiPlatformRoute: typeof AiPlatformRoute
   ArchitectureRoute: typeof ArchitectureRoute
   DeveloperPlatformRoute: typeof DeveloperPlatformRoute
+  DocsRoute: typeof DocsRoute
   EngineeringStandardsRoute: typeof EngineeringStandardsRoute
   KnowledgeGraphRoute: typeof KnowledgeGraphRoute
   KnowledgePlatformRoute: typeof KnowledgePlatformRoute
@@ -241,6 +254,13 @@ declare module '@tanstack/react-router' {
       path: '/engineering-standards'
       fullPath: '/engineering-standards'
       preLoaderRoute: typeof EngineeringStandardsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/docs': {
+      id: '/docs'
+      path: '/docs'
+      fullPath: '/docs'
+      preLoaderRoute: typeof DocsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/developer-platform': {
@@ -301,6 +321,7 @@ const rootRouteChildren: RootRouteChildren = {
   AiPlatformRoute: AiPlatformRoute,
   ArchitectureRoute: ArchitectureRoute,
   DeveloperPlatformRoute: DeveloperPlatformRoute,
+  DocsRoute: DocsRoute,
   EngineeringStandardsRoute: EngineeringStandardsRoute,
   KnowledgeGraphRoute: KnowledgeGraphRoute,
   KnowledgePlatformRoute: KnowledgePlatformRoute,
