@@ -18,6 +18,7 @@ import { Route as EngineeringStandardsRouteImport } from './routes/engineering-s
 import { Route as DeveloperPlatformRouteImport } from './routes/developer-platform'
 import { Route as ArchitectureRouteImport } from './routes/architecture'
 import { Route as AiPlatformRouteImport } from './routes/ai-platform'
+import { Route as AdrRouteImport } from './routes/adr'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CapabilitiesIndexRouteImport } from './routes/capabilities.index'
 import { Route as CapabilitiesSlugRouteImport } from './routes/capabilities.$slug'
@@ -67,6 +68,11 @@ const AiPlatformRoute = AiPlatformRouteImport.update({
   path: '/ai-platform',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdrRoute = AdrRouteImport.update({
+  id: '/adr',
+  path: '/adr',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -85,6 +91,7 @@ const CapabilitiesSlugRoute = CapabilitiesSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/adr': typeof AdrRoute
   '/ai-platform': typeof AiPlatformRoute
   '/architecture': typeof ArchitectureRoute
   '/developer-platform': typeof DeveloperPlatformRoute
@@ -99,6 +106,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/adr': typeof AdrRoute
   '/ai-platform': typeof AiPlatformRoute
   '/architecture': typeof ArchitectureRoute
   '/developer-platform': typeof DeveloperPlatformRoute
@@ -114,6 +122,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/adr': typeof AdrRoute
   '/ai-platform': typeof AiPlatformRoute
   '/architecture': typeof ArchitectureRoute
   '/developer-platform': typeof DeveloperPlatformRoute
@@ -130,6 +139,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/adr'
     | '/ai-platform'
     | '/architecture'
     | '/developer-platform'
@@ -144,6 +154,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/adr'
     | '/ai-platform'
     | '/architecture'
     | '/developer-platform'
@@ -158,6 +169,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/adr'
     | '/ai-platform'
     | '/architecture'
     | '/developer-platform'
@@ -173,6 +185,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdrRoute: typeof AdrRoute
   AiPlatformRoute: typeof AiPlatformRoute
   ArchitectureRoute: typeof ArchitectureRoute
   DeveloperPlatformRoute: typeof DeveloperPlatformRoute
@@ -251,6 +264,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AiPlatformRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/adr': {
+      id: '/adr'
+      path: '/adr'
+      fullPath: '/adr'
+      preLoaderRoute: typeof AdrRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -277,6 +297,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdrRoute: AdrRoute,
   AiPlatformRoute: AiPlatformRoute,
   ArchitectureRoute: ArchitectureRoute,
   DeveloperPlatformRoute: DeveloperPlatformRoute,
