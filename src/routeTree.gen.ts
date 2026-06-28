@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as PackagesRouteImport } from './routes/packages'
 import { Route as KnowledgePlatformRouteImport } from './routes/knowledge-platform'
 import { Route as EngineeringStandardsRouteImport } from './routes/engineering-standards'
 import { Route as DeveloperPlatformRouteImport } from './routes/developer-platform'
@@ -18,6 +19,11 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as CapabilitiesIndexRouteImport } from './routes/capabilities.index'
 import { Route as CapabilitiesSlugRouteImport } from './routes/capabilities.$slug'
 
+const PackagesRoute = PackagesRouteImport.update({
+  id: '/packages',
+  path: '/packages',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const KnowledgePlatformRoute = KnowledgePlatformRouteImport.update({
   id: '/knowledge-platform',
   path: '/knowledge-platform',
@@ -66,6 +72,7 @@ export interface FileRoutesByFullPath {
   '/developer-platform': typeof DeveloperPlatformRoute
   '/engineering-standards': typeof EngineeringStandardsRoute
   '/knowledge-platform': typeof KnowledgePlatformRoute
+  '/packages': typeof PackagesRoute
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
   '/capabilities/': typeof CapabilitiesIndexRoute
 }
@@ -76,6 +83,7 @@ export interface FileRoutesByTo {
   '/developer-platform': typeof DeveloperPlatformRoute
   '/engineering-standards': typeof EngineeringStandardsRoute
   '/knowledge-platform': typeof KnowledgePlatformRoute
+  '/packages': typeof PackagesRoute
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
   '/capabilities': typeof CapabilitiesIndexRoute
 }
@@ -87,6 +95,7 @@ export interface FileRoutesById {
   '/developer-platform': typeof DeveloperPlatformRoute
   '/engineering-standards': typeof EngineeringStandardsRoute
   '/knowledge-platform': typeof KnowledgePlatformRoute
+  '/packages': typeof PackagesRoute
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
   '/capabilities/': typeof CapabilitiesIndexRoute
 }
@@ -99,6 +108,7 @@ export interface FileRouteTypes {
     | '/developer-platform'
     | '/engineering-standards'
     | '/knowledge-platform'
+    | '/packages'
     | '/capabilities/$slug'
     | '/capabilities/'
   fileRoutesByTo: FileRoutesByTo
@@ -109,6 +119,7 @@ export interface FileRouteTypes {
     | '/developer-platform'
     | '/engineering-standards'
     | '/knowledge-platform'
+    | '/packages'
     | '/capabilities/$slug'
     | '/capabilities'
   id:
@@ -119,6 +130,7 @@ export interface FileRouteTypes {
     | '/developer-platform'
     | '/engineering-standards'
     | '/knowledge-platform'
+    | '/packages'
     | '/capabilities/$slug'
     | '/capabilities/'
   fileRoutesById: FileRoutesById
@@ -130,12 +142,20 @@ export interface RootRouteChildren {
   DeveloperPlatformRoute: typeof DeveloperPlatformRoute
   EngineeringStandardsRoute: typeof EngineeringStandardsRoute
   KnowledgePlatformRoute: typeof KnowledgePlatformRoute
+  PackagesRoute: typeof PackagesRoute
   CapabilitiesSlugRoute: typeof CapabilitiesSlugRoute
   CapabilitiesIndexRoute: typeof CapabilitiesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/packages': {
+      id: '/packages'
+      path: '/packages'
+      fullPath: '/packages'
+      preLoaderRoute: typeof PackagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/knowledge-platform': {
       id: '/knowledge-platform'
       path: '/knowledge-platform'
@@ -202,6 +222,7 @@ const rootRouteChildren: RootRouteChildren = {
   DeveloperPlatformRoute: DeveloperPlatformRoute,
   EngineeringStandardsRoute: EngineeringStandardsRoute,
   KnowledgePlatformRoute: KnowledgePlatformRoute,
+  PackagesRoute: PackagesRoute,
   CapabilitiesSlugRoute: CapabilitiesSlugRoute,
   CapabilitiesIndexRoute: CapabilitiesIndexRoute,
 }
