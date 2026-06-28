@@ -9,12 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as KnowledgePlatformRouteImport } from './routes/knowledge-platform'
 import { Route as ArchitectureRouteImport } from './routes/architecture'
 import { Route as AiPlatformRouteImport } from './routes/ai-platform'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CapabilitiesIndexRouteImport } from './routes/capabilities.index'
 import { Route as CapabilitiesSlugRouteImport } from './routes/capabilities.$slug'
 
+const KnowledgePlatformRoute = KnowledgePlatformRouteImport.update({
+  id: '/knowledge-platform',
+  path: '/knowledge-platform',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ArchitectureRoute = ArchitectureRouteImport.update({
   id: '/architecture',
   path: '/architecture',
@@ -45,6 +51,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/ai-platform': typeof AiPlatformRoute
   '/architecture': typeof ArchitectureRoute
+  '/knowledge-platform': typeof KnowledgePlatformRoute
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
   '/capabilities/': typeof CapabilitiesIndexRoute
 }
@@ -52,6 +59,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/ai-platform': typeof AiPlatformRoute
   '/architecture': typeof ArchitectureRoute
+  '/knowledge-platform': typeof KnowledgePlatformRoute
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
   '/capabilities': typeof CapabilitiesIndexRoute
 }
@@ -60,6 +68,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/ai-platform': typeof AiPlatformRoute
   '/architecture': typeof ArchitectureRoute
+  '/knowledge-platform': typeof KnowledgePlatformRoute
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
   '/capabilities/': typeof CapabilitiesIndexRoute
 }
@@ -69,6 +78,7 @@ export interface FileRouteTypes {
     | '/'
     | '/ai-platform'
     | '/architecture'
+    | '/knowledge-platform'
     | '/capabilities/$slug'
     | '/capabilities/'
   fileRoutesByTo: FileRoutesByTo
@@ -76,6 +86,7 @@ export interface FileRouteTypes {
     | '/'
     | '/ai-platform'
     | '/architecture'
+    | '/knowledge-platform'
     | '/capabilities/$slug'
     | '/capabilities'
   id:
@@ -83,6 +94,7 @@ export interface FileRouteTypes {
     | '/'
     | '/ai-platform'
     | '/architecture'
+    | '/knowledge-platform'
     | '/capabilities/$slug'
     | '/capabilities/'
   fileRoutesById: FileRoutesById
@@ -91,12 +103,20 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AiPlatformRoute: typeof AiPlatformRoute
   ArchitectureRoute: typeof ArchitectureRoute
+  KnowledgePlatformRoute: typeof KnowledgePlatformRoute
   CapabilitiesSlugRoute: typeof CapabilitiesSlugRoute
   CapabilitiesIndexRoute: typeof CapabilitiesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/knowledge-platform': {
+      id: '/knowledge-platform'
+      path: '/knowledge-platform'
+      fullPath: '/knowledge-platform'
+      preLoaderRoute: typeof KnowledgePlatformRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/architecture': {
       id: '/architecture'
       path: '/architecture'
@@ -139,6 +159,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AiPlatformRoute: AiPlatformRoute,
   ArchitectureRoute: ArchitectureRoute,
+  KnowledgePlatformRoute: KnowledgePlatformRoute,
   CapabilitiesSlugRoute: CapabilitiesSlugRoute,
   CapabilitiesIndexRoute: CapabilitiesIndexRoute,
 }
