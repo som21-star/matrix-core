@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ArchitectureRouteImport } from './routes/architecture'
+import { Route as AiPlatformRouteImport } from './routes/ai-platform'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CapabilitiesIndexRouteImport } from './routes/capabilities.index'
 import { Route as CapabilitiesSlugRouteImport } from './routes/capabilities.$slug'
@@ -17,6 +18,11 @@ import { Route as CapabilitiesSlugRouteImport } from './routes/capabilities.$slu
 const ArchitectureRoute = ArchitectureRouteImport.update({
   id: '/architecture',
   path: '/architecture',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AiPlatformRoute = AiPlatformRouteImport.update({
+  id: '/ai-platform',
+  path: '/ai-platform',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -37,12 +43,14 @@ const CapabilitiesSlugRoute = CapabilitiesSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/ai-platform': typeof AiPlatformRoute
   '/architecture': typeof ArchitectureRoute
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
   '/capabilities/': typeof CapabilitiesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/ai-platform': typeof AiPlatformRoute
   '/architecture': typeof ArchitectureRoute
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
   '/capabilities': typeof CapabilitiesIndexRoute
@@ -50,18 +58,30 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/ai-platform': typeof AiPlatformRoute
   '/architecture': typeof ArchitectureRoute
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
   '/capabilities/': typeof CapabilitiesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/architecture' | '/capabilities/$slug' | '/capabilities/'
+  fullPaths:
+    | '/'
+    | '/ai-platform'
+    | '/architecture'
+    | '/capabilities/$slug'
+    | '/capabilities/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/architecture' | '/capabilities/$slug' | '/capabilities'
+  to:
+    | '/'
+    | '/ai-platform'
+    | '/architecture'
+    | '/capabilities/$slug'
+    | '/capabilities'
   id:
     | '__root__'
     | '/'
+    | '/ai-platform'
     | '/architecture'
     | '/capabilities/$slug'
     | '/capabilities/'
@@ -69,6 +89,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AiPlatformRoute: typeof AiPlatformRoute
   ArchitectureRoute: typeof ArchitectureRoute
   CapabilitiesSlugRoute: typeof CapabilitiesSlugRoute
   CapabilitiesIndexRoute: typeof CapabilitiesIndexRoute
@@ -81,6 +102,13 @@ declare module '@tanstack/react-router' {
       path: '/architecture'
       fullPath: '/architecture'
       preLoaderRoute: typeof ArchitectureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ai-platform': {
+      id: '/ai-platform'
+      path: '/ai-platform'
+      fullPath: '/ai-platform'
+      preLoaderRoute: typeof AiPlatformRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -109,6 +137,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AiPlatformRoute: AiPlatformRoute,
   ArchitectureRoute: ArchitectureRoute,
   CapabilitiesSlugRoute: CapabilitiesSlugRoute,
   CapabilitiesIndexRoute: CapabilitiesIndexRoute,
