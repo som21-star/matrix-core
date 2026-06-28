@@ -9,38 +9,348 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TemplatesRouteImport } from './routes/templates'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as PackagesRouteImport } from './routes/packages'
+import { Route as OntologyRouteImport } from './routes/ontology'
+import { Route as KnowledgePlatformRouteImport } from './routes/knowledge-platform'
+import { Route as KnowledgeGraphRouteImport } from './routes/knowledge-graph'
+import { Route as GovernanceRouteImport } from './routes/governance'
+import { Route as ExperimentsRouteImport } from './routes/experiments'
+import { Route as EngineeringStandardsRouteImport } from './routes/engineering-standards'
+import { Route as DocsRouteImport } from './routes/docs'
+import { Route as DeveloperPlatformRouteImport } from './routes/developer-platform'
+import { Route as ArchitectureRouteImport } from './routes/architecture'
+import { Route as AiPlatformRouteImport } from './routes/ai-platform'
+import { Route as AdrRouteImport } from './routes/adr'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CapabilitiesIndexRouteImport } from './routes/capabilities.index'
+import { Route as CapabilitiesSlugRouteImport } from './routes/capabilities.$slug'
 
+const TemplatesRoute = TemplatesRouteImport.update({
+  id: '/templates',
+  path: '/templates',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PackagesRoute = PackagesRouteImport.update({
+  id: '/packages',
+  path: '/packages',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OntologyRoute = OntologyRouteImport.update({
+  id: '/ontology',
+  path: '/ontology',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KnowledgePlatformRoute = KnowledgePlatformRouteImport.update({
+  id: '/knowledge-platform',
+  path: '/knowledge-platform',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KnowledgeGraphRoute = KnowledgeGraphRouteImport.update({
+  id: '/knowledge-graph',
+  path: '/knowledge-graph',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GovernanceRoute = GovernanceRouteImport.update({
+  id: '/governance',
+  path: '/governance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExperimentsRoute = ExperimentsRouteImport.update({
+  id: '/experiments',
+  path: '/experiments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EngineeringStandardsRoute = EngineeringStandardsRouteImport.update({
+  id: '/engineering-standards',
+  path: '/engineering-standards',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DocsRoute = DocsRouteImport.update({
+  id: '/docs',
+  path: '/docs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DeveloperPlatformRoute = DeveloperPlatformRouteImport.update({
+  id: '/developer-platform',
+  path: '/developer-platform',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArchitectureRoute = ArchitectureRouteImport.update({
+  id: '/architecture',
+  path: '/architecture',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AiPlatformRoute = AiPlatformRouteImport.update({
+  id: '/ai-platform',
+  path: '/ai-platform',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdrRoute = AdrRouteImport.update({
+  id: '/adr',
+  path: '/adr',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CapabilitiesIndexRoute = CapabilitiesIndexRouteImport.update({
+  id: '/capabilities/',
+  path: '/capabilities/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CapabilitiesSlugRoute = CapabilitiesSlugRouteImport.update({
+  id: '/capabilities/$slug',
+  path: '/capabilities/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/adr': typeof AdrRoute
+  '/ai-platform': typeof AiPlatformRoute
+  '/architecture': typeof ArchitectureRoute
+  '/developer-platform': typeof DeveloperPlatformRoute
+  '/docs': typeof DocsRoute
+  '/engineering-standards': typeof EngineeringStandardsRoute
+  '/experiments': typeof ExperimentsRoute
+  '/governance': typeof GovernanceRoute
+  '/knowledge-graph': typeof KnowledgeGraphRoute
+  '/knowledge-platform': typeof KnowledgePlatformRoute
+  '/ontology': typeof OntologyRoute
+  '/packages': typeof PackagesRoute
+  '/settings': typeof SettingsRoute
+  '/templates': typeof TemplatesRoute
+  '/capabilities/$slug': typeof CapabilitiesSlugRoute
+  '/capabilities/': typeof CapabilitiesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/adr': typeof AdrRoute
+  '/ai-platform': typeof AiPlatformRoute
+  '/architecture': typeof ArchitectureRoute
+  '/developer-platform': typeof DeveloperPlatformRoute
+  '/docs': typeof DocsRoute
+  '/engineering-standards': typeof EngineeringStandardsRoute
+  '/experiments': typeof ExperimentsRoute
+  '/governance': typeof GovernanceRoute
+  '/knowledge-graph': typeof KnowledgeGraphRoute
+  '/knowledge-platform': typeof KnowledgePlatformRoute
+  '/ontology': typeof OntologyRoute
+  '/packages': typeof PackagesRoute
+  '/settings': typeof SettingsRoute
+  '/templates': typeof TemplatesRoute
+  '/capabilities/$slug': typeof CapabilitiesSlugRoute
+  '/capabilities': typeof CapabilitiesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/adr': typeof AdrRoute
+  '/ai-platform': typeof AiPlatformRoute
+  '/architecture': typeof ArchitectureRoute
+  '/developer-platform': typeof DeveloperPlatformRoute
+  '/docs': typeof DocsRoute
+  '/engineering-standards': typeof EngineeringStandardsRoute
+  '/experiments': typeof ExperimentsRoute
+  '/governance': typeof GovernanceRoute
+  '/knowledge-graph': typeof KnowledgeGraphRoute
+  '/knowledge-platform': typeof KnowledgePlatformRoute
+  '/ontology': typeof OntologyRoute
+  '/packages': typeof PackagesRoute
+  '/settings': typeof SettingsRoute
+  '/templates': typeof TemplatesRoute
+  '/capabilities/$slug': typeof CapabilitiesSlugRoute
+  '/capabilities/': typeof CapabilitiesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/adr'
+    | '/ai-platform'
+    | '/architecture'
+    | '/developer-platform'
+    | '/docs'
+    | '/engineering-standards'
+    | '/experiments'
+    | '/governance'
+    | '/knowledge-graph'
+    | '/knowledge-platform'
+    | '/ontology'
+    | '/packages'
+    | '/settings'
+    | '/templates'
+    | '/capabilities/$slug'
+    | '/capabilities/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/adr'
+    | '/ai-platform'
+    | '/architecture'
+    | '/developer-platform'
+    | '/docs'
+    | '/engineering-standards'
+    | '/experiments'
+    | '/governance'
+    | '/knowledge-graph'
+    | '/knowledge-platform'
+    | '/ontology'
+    | '/packages'
+    | '/settings'
+    | '/templates'
+    | '/capabilities/$slug'
+    | '/capabilities'
+  id:
+    | '__root__'
+    | '/'
+    | '/adr'
+    | '/ai-platform'
+    | '/architecture'
+    | '/developer-platform'
+    | '/docs'
+    | '/engineering-standards'
+    | '/experiments'
+    | '/governance'
+    | '/knowledge-graph'
+    | '/knowledge-platform'
+    | '/ontology'
+    | '/packages'
+    | '/settings'
+    | '/templates'
+    | '/capabilities/$slug'
+    | '/capabilities/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdrRoute: typeof AdrRoute
+  AiPlatformRoute: typeof AiPlatformRoute
+  ArchitectureRoute: typeof ArchitectureRoute
+  DeveloperPlatformRoute: typeof DeveloperPlatformRoute
+  DocsRoute: typeof DocsRoute
+  EngineeringStandardsRoute: typeof EngineeringStandardsRoute
+  ExperimentsRoute: typeof ExperimentsRoute
+  GovernanceRoute: typeof GovernanceRoute
+  KnowledgeGraphRoute: typeof KnowledgeGraphRoute
+  KnowledgePlatformRoute: typeof KnowledgePlatformRoute
+  OntologyRoute: typeof OntologyRoute
+  PackagesRoute: typeof PackagesRoute
+  SettingsRoute: typeof SettingsRoute
+  TemplatesRoute: typeof TemplatesRoute
+  CapabilitiesSlugRoute: typeof CapabilitiesSlugRoute
+  CapabilitiesIndexRoute: typeof CapabilitiesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/templates': {
+      id: '/templates'
+      path: '/templates'
+      fullPath: '/templates'
+      preLoaderRoute: typeof TemplatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/packages': {
+      id: '/packages'
+      path: '/packages'
+      fullPath: '/packages'
+      preLoaderRoute: typeof PackagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ontology': {
+      id: '/ontology'
+      path: '/ontology'
+      fullPath: '/ontology'
+      preLoaderRoute: typeof OntologyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/knowledge-platform': {
+      id: '/knowledge-platform'
+      path: '/knowledge-platform'
+      fullPath: '/knowledge-platform'
+      preLoaderRoute: typeof KnowledgePlatformRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/knowledge-graph': {
+      id: '/knowledge-graph'
+      path: '/knowledge-graph'
+      fullPath: '/knowledge-graph'
+      preLoaderRoute: typeof KnowledgeGraphRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/governance': {
+      id: '/governance'
+      path: '/governance'
+      fullPath: '/governance'
+      preLoaderRoute: typeof GovernanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/experiments': {
+      id: '/experiments'
+      path: '/experiments'
+      fullPath: '/experiments'
+      preLoaderRoute: typeof ExperimentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/engineering-standards': {
+      id: '/engineering-standards'
+      path: '/engineering-standards'
+      fullPath: '/engineering-standards'
+      preLoaderRoute: typeof EngineeringStandardsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/docs': {
+      id: '/docs'
+      path: '/docs'
+      fullPath: '/docs'
+      preLoaderRoute: typeof DocsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/developer-platform': {
+      id: '/developer-platform'
+      path: '/developer-platform'
+      fullPath: '/developer-platform'
+      preLoaderRoute: typeof DeveloperPlatformRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/architecture': {
+      id: '/architecture'
+      path: '/architecture'
+      fullPath: '/architecture'
+      preLoaderRoute: typeof ArchitectureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ai-platform': {
+      id: '/ai-platform'
+      path: '/ai-platform'
+      fullPath: '/ai-platform'
+      preLoaderRoute: typeof AiPlatformRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/adr': {
+      id: '/adr'
+      path: '/adr'
+      fullPath: '/adr'
+      preLoaderRoute: typeof AdrRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,22 +358,42 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/capabilities/': {
+      id: '/capabilities/'
+      path: '/capabilities'
+      fullPath: '/capabilities/'
+      preLoaderRoute: typeof CapabilitiesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/capabilities/$slug': {
+      id: '/capabilities/$slug'
+      path: '/capabilities/$slug'
+      fullPath: '/capabilities/$slug'
+      preLoaderRoute: typeof CapabilitiesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdrRoute: AdrRoute,
+  AiPlatformRoute: AiPlatformRoute,
+  ArchitectureRoute: ArchitectureRoute,
+  DeveloperPlatformRoute: DeveloperPlatformRoute,
+  DocsRoute: DocsRoute,
+  EngineeringStandardsRoute: EngineeringStandardsRoute,
+  ExperimentsRoute: ExperimentsRoute,
+  GovernanceRoute: GovernanceRoute,
+  KnowledgeGraphRoute: KnowledgeGraphRoute,
+  KnowledgePlatformRoute: KnowledgePlatformRoute,
+  OntologyRoute: OntologyRoute,
+  PackagesRoute: PackagesRoute,
+  SettingsRoute: SettingsRoute,
+  TemplatesRoute: TemplatesRoute,
+  CapabilitiesSlugRoute: CapabilitiesSlugRoute,
+  CapabilitiesIndexRoute: CapabilitiesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
