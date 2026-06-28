@@ -66,7 +66,7 @@ function CapabilityDetail() {
 
       <Section number="03" title="Consumers" description="Products that compose this capability today.">
         <ul className="border-t border-border">
-          {cap.consumers.map((c) => (
+          {cap.consumers.map((c: string) => (
             <li key={c} className="flex items-center justify-between border-b border-border py-3 text-sm">
               <span>{c}</span>
               <span className="font-mono text-[10px] text-muted-foreground">prod</span>
@@ -83,7 +83,7 @@ function CapabilityDetail() {
               <p className="text-xs text-muted-foreground italic">None</p>
             ) : (
               <ul className="font-mono text-xs space-y-1.5">
-                {cap.events.produced.map((e) => <li key={e}>↑ {e}</li>)}
+                {cap.events.produced.map((e: string) => <li key={e}>↑ {e}</li>)}
               </ul>
             )}
           </div>
@@ -93,7 +93,7 @@ function CapabilityDetail() {
               <p className="text-xs text-muted-foreground italic">None</p>
             ) : (
               <ul className="font-mono text-xs space-y-1.5">
-                {cap.events.consumed.map((e) => <li key={e}>↓ {e}</li>)}
+                {cap.events.consumed.map((e: string) => <li key={e}>↓ {e}</li>)}
               </ul>
             )}
           </div>
