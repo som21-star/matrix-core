@@ -59,7 +59,7 @@ function CapabilityDetail() {
           {cap.dependencies.length === 0 ? (
             <p className="text-sm text-muted-foreground italic">No platform dependencies.</p>
           ) : (
-            cap.dependencies.map((d) => <Card key={d} title={d} meta="package" />)
+            cap.dependencies.map((d: string) => <Card key={d} title={d} meta="package" />)
           )}
         </div>
       </Section>
