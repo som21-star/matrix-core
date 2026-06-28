@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as KnowledgePlatformRouteImport } from './routes/knowledge-platform'
+import { Route as EngineeringStandardsRouteImport } from './routes/engineering-standards'
 import { Route as DeveloperPlatformRouteImport } from './routes/developer-platform'
 import { Route as ArchitectureRouteImport } from './routes/architecture'
 import { Route as AiPlatformRouteImport } from './routes/ai-platform'
@@ -20,6 +21,11 @@ import { Route as CapabilitiesSlugRouteImport } from './routes/capabilities.$slu
 const KnowledgePlatformRoute = KnowledgePlatformRouteImport.update({
   id: '/knowledge-platform',
   path: '/knowledge-platform',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EngineeringStandardsRoute = EngineeringStandardsRouteImport.update({
+  id: '/engineering-standards',
+  path: '/engineering-standards',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DeveloperPlatformRoute = DeveloperPlatformRouteImport.update({
@@ -58,6 +64,7 @@ export interface FileRoutesByFullPath {
   '/ai-platform': typeof AiPlatformRoute
   '/architecture': typeof ArchitectureRoute
   '/developer-platform': typeof DeveloperPlatformRoute
+  '/engineering-standards': typeof EngineeringStandardsRoute
   '/knowledge-platform': typeof KnowledgePlatformRoute
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
   '/capabilities/': typeof CapabilitiesIndexRoute
@@ -67,6 +74,7 @@ export interface FileRoutesByTo {
   '/ai-platform': typeof AiPlatformRoute
   '/architecture': typeof ArchitectureRoute
   '/developer-platform': typeof DeveloperPlatformRoute
+  '/engineering-standards': typeof EngineeringStandardsRoute
   '/knowledge-platform': typeof KnowledgePlatformRoute
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
   '/capabilities': typeof CapabilitiesIndexRoute
@@ -77,6 +85,7 @@ export interface FileRoutesById {
   '/ai-platform': typeof AiPlatformRoute
   '/architecture': typeof ArchitectureRoute
   '/developer-platform': typeof DeveloperPlatformRoute
+  '/engineering-standards': typeof EngineeringStandardsRoute
   '/knowledge-platform': typeof KnowledgePlatformRoute
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
   '/capabilities/': typeof CapabilitiesIndexRoute
@@ -88,6 +97,7 @@ export interface FileRouteTypes {
     | '/ai-platform'
     | '/architecture'
     | '/developer-platform'
+    | '/engineering-standards'
     | '/knowledge-platform'
     | '/capabilities/$slug'
     | '/capabilities/'
@@ -97,6 +107,7 @@ export interface FileRouteTypes {
     | '/ai-platform'
     | '/architecture'
     | '/developer-platform'
+    | '/engineering-standards'
     | '/knowledge-platform'
     | '/capabilities/$slug'
     | '/capabilities'
@@ -106,6 +117,7 @@ export interface FileRouteTypes {
     | '/ai-platform'
     | '/architecture'
     | '/developer-platform'
+    | '/engineering-standards'
     | '/knowledge-platform'
     | '/capabilities/$slug'
     | '/capabilities/'
@@ -116,6 +128,7 @@ export interface RootRouteChildren {
   AiPlatformRoute: typeof AiPlatformRoute
   ArchitectureRoute: typeof ArchitectureRoute
   DeveloperPlatformRoute: typeof DeveloperPlatformRoute
+  EngineeringStandardsRoute: typeof EngineeringStandardsRoute
   KnowledgePlatformRoute: typeof KnowledgePlatformRoute
   CapabilitiesSlugRoute: typeof CapabilitiesSlugRoute
   CapabilitiesIndexRoute: typeof CapabilitiesIndexRoute
@@ -128,6 +141,13 @@ declare module '@tanstack/react-router' {
       path: '/knowledge-platform'
       fullPath: '/knowledge-platform'
       preLoaderRoute: typeof KnowledgePlatformRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/engineering-standards': {
+      id: '/engineering-standards'
+      path: '/engineering-standards'
+      fullPath: '/engineering-standards'
+      preLoaderRoute: typeof EngineeringStandardsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/developer-platform': {
@@ -180,6 +200,7 @@ const rootRouteChildren: RootRouteChildren = {
   AiPlatformRoute: AiPlatformRoute,
   ArchitectureRoute: ArchitectureRoute,
   DeveloperPlatformRoute: DeveloperPlatformRoute,
+  EngineeringStandardsRoute: EngineeringStandardsRoute,
   KnowledgePlatformRoute: KnowledgePlatformRoute,
   CapabilitiesSlugRoute: CapabilitiesSlugRoute,
   CapabilitiesIndexRoute: CapabilitiesIndexRoute,
