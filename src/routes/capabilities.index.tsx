@@ -3,7 +3,7 @@ import { capabilities } from "@/data/platform";
 import { PageFrame } from "@/components/page-frame";
 import { ArrowUpRight } from "lucide-react";
 
-export const Route = createFileRoute("/capabilities")({
+export const Route = createFileRoute("/capabilities/")({
   head: () => ({
     meta: [
       { title: "Capability Registry — MATRIX Intelligence Platform" },
