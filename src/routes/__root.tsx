@@ -95,6 +95,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content: "Intelligence. Architecture. Impact.",
       },
       { property: "og:type", content: "website" },
+      { name: "twitter:title", content: "MATRIX Intelligence Platform" },
+      { name: "description", content: "MATRIX Intelligence Platform (MIP) is an enterprise intelligence operating system providing shared intelligence capabilities for all MATRIX products." },
+      { property: "og:description", content: "MATRIX Intelligence Platform (MIP) is an enterprise intelligence operating system providing shared intelligence capabilities for all MATRIX products." },
+      { name: "twitter:description", content: "MATRIX Intelligence Platform (MIP) is an enterprise intelligence operating system providing shared intelligence capabilities for all MATRIX products." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/7f8b8902-6dac-4d9e-90a1-ee63841cdd78/id-preview-9ea8646e--6be6ccd6-f869-4231-9ac4-23a7dacbb010.lovable.app-1782622398780.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/7f8b8902-6dac-4d9e-90a1-ee63841cdd78/id-preview-9ea8646e--6be6ccd6-f869-4231-9ac4-23a7dacbb010.lovable.app-1782622398780.png" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
