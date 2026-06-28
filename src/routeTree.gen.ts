@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TemplatesRouteImport } from './routes/templates'
 import { Route as PackagesRouteImport } from './routes/packages'
+import { Route as OntologyRouteImport } from './routes/ontology'
 import { Route as KnowledgePlatformRouteImport } from './routes/knowledge-platform'
 import { Route as EngineeringStandardsRouteImport } from './routes/engineering-standards'
 import { Route as DeveloperPlatformRouteImport } from './routes/developer-platform'
@@ -28,6 +29,11 @@ const TemplatesRoute = TemplatesRouteImport.update({
 const PackagesRoute = PackagesRouteImport.update({
   id: '/packages',
   path: '/packages',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OntologyRoute = OntologyRouteImport.update({
+  id: '/ontology',
+  path: '/ontology',
   getParentRoute: () => rootRouteImport,
 } as any)
 const KnowledgePlatformRoute = KnowledgePlatformRouteImport.update({
@@ -78,6 +84,7 @@ export interface FileRoutesByFullPath {
   '/developer-platform': typeof DeveloperPlatformRoute
   '/engineering-standards': typeof EngineeringStandardsRoute
   '/knowledge-platform': typeof KnowledgePlatformRoute
+  '/ontology': typeof OntologyRoute
   '/packages': typeof PackagesRoute
   '/templates': typeof TemplatesRoute
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
@@ -90,6 +97,7 @@ export interface FileRoutesByTo {
   '/developer-platform': typeof DeveloperPlatformRoute
   '/engineering-standards': typeof EngineeringStandardsRoute
   '/knowledge-platform': typeof KnowledgePlatformRoute
+  '/ontology': typeof OntologyRoute
   '/packages': typeof PackagesRoute
   '/templates': typeof TemplatesRoute
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
@@ -103,6 +111,7 @@ export interface FileRoutesById {
   '/developer-platform': typeof DeveloperPlatformRoute
   '/engineering-standards': typeof EngineeringStandardsRoute
   '/knowledge-platform': typeof KnowledgePlatformRoute
+  '/ontology': typeof OntologyRoute
   '/packages': typeof PackagesRoute
   '/templates': typeof TemplatesRoute
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
@@ -117,6 +126,7 @@ export interface FileRouteTypes {
     | '/developer-platform'
     | '/engineering-standards'
     | '/knowledge-platform'
+    | '/ontology'
     | '/packages'
     | '/templates'
     | '/capabilities/$slug'
@@ -129,6 +139,7 @@ export interface FileRouteTypes {
     | '/developer-platform'
     | '/engineering-standards'
     | '/knowledge-platform'
+    | '/ontology'
     | '/packages'
     | '/templates'
     | '/capabilities/$slug'
@@ -141,6 +152,7 @@ export interface FileRouteTypes {
     | '/developer-platform'
     | '/engineering-standards'
     | '/knowledge-platform'
+    | '/ontology'
     | '/packages'
     | '/templates'
     | '/capabilities/$slug'
@@ -154,6 +166,7 @@ export interface RootRouteChildren {
   DeveloperPlatformRoute: typeof DeveloperPlatformRoute
   EngineeringStandardsRoute: typeof EngineeringStandardsRoute
   KnowledgePlatformRoute: typeof KnowledgePlatformRoute
+  OntologyRoute: typeof OntologyRoute
   PackagesRoute: typeof PackagesRoute
   TemplatesRoute: typeof TemplatesRoute
   CapabilitiesSlugRoute: typeof CapabilitiesSlugRoute
@@ -174,6 +187,13 @@ declare module '@tanstack/react-router' {
       path: '/packages'
       fullPath: '/packages'
       preLoaderRoute: typeof PackagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ontology': {
+      id: '/ontology'
+      path: '/ontology'
+      fullPath: '/ontology'
+      preLoaderRoute: typeof OntologyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/knowledge-platform': {
@@ -242,6 +262,7 @@ const rootRouteChildren: RootRouteChildren = {
   DeveloperPlatformRoute: DeveloperPlatformRoute,
   EngineeringStandardsRoute: EngineeringStandardsRoute,
   KnowledgePlatformRoute: KnowledgePlatformRoute,
+  OntologyRoute: OntologyRoute,
   PackagesRoute: PackagesRoute,
   TemplatesRoute: TemplatesRoute,
   CapabilitiesSlugRoute: CapabilitiesSlugRoute,
