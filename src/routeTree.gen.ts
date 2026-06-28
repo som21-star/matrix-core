@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as KnowledgePlatformRouteImport } from './routes/knowledge-platform'
+import { Route as DeveloperPlatformRouteImport } from './routes/developer-platform'
 import { Route as ArchitectureRouteImport } from './routes/architecture'
 import { Route as AiPlatformRouteImport } from './routes/ai-platform'
 import { Route as IndexRouteImport } from './routes/index'
@@ -19,6 +20,11 @@ import { Route as CapabilitiesSlugRouteImport } from './routes/capabilities.$slu
 const KnowledgePlatformRoute = KnowledgePlatformRouteImport.update({
   id: '/knowledge-platform',
   path: '/knowledge-platform',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DeveloperPlatformRoute = DeveloperPlatformRouteImport.update({
+  id: '/developer-platform',
+  path: '/developer-platform',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ArchitectureRoute = ArchitectureRouteImport.update({
@@ -51,6 +57,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/ai-platform': typeof AiPlatformRoute
   '/architecture': typeof ArchitectureRoute
+  '/developer-platform': typeof DeveloperPlatformRoute
   '/knowledge-platform': typeof KnowledgePlatformRoute
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
   '/capabilities/': typeof CapabilitiesIndexRoute
@@ -59,6 +66,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/ai-platform': typeof AiPlatformRoute
   '/architecture': typeof ArchitectureRoute
+  '/developer-platform': typeof DeveloperPlatformRoute
   '/knowledge-platform': typeof KnowledgePlatformRoute
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
   '/capabilities': typeof CapabilitiesIndexRoute
@@ -68,6 +76,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/ai-platform': typeof AiPlatformRoute
   '/architecture': typeof ArchitectureRoute
+  '/developer-platform': typeof DeveloperPlatformRoute
   '/knowledge-platform': typeof KnowledgePlatformRoute
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
   '/capabilities/': typeof CapabilitiesIndexRoute
@@ -78,6 +87,7 @@ export interface FileRouteTypes {
     | '/'
     | '/ai-platform'
     | '/architecture'
+    | '/developer-platform'
     | '/knowledge-platform'
     | '/capabilities/$slug'
     | '/capabilities/'
@@ -86,6 +96,7 @@ export interface FileRouteTypes {
     | '/'
     | '/ai-platform'
     | '/architecture'
+    | '/developer-platform'
     | '/knowledge-platform'
     | '/capabilities/$slug'
     | '/capabilities'
@@ -94,6 +105,7 @@ export interface FileRouteTypes {
     | '/'
     | '/ai-platform'
     | '/architecture'
+    | '/developer-platform'
     | '/knowledge-platform'
     | '/capabilities/$slug'
     | '/capabilities/'
@@ -103,6 +115,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AiPlatformRoute: typeof AiPlatformRoute
   ArchitectureRoute: typeof ArchitectureRoute
+  DeveloperPlatformRoute: typeof DeveloperPlatformRoute
   KnowledgePlatformRoute: typeof KnowledgePlatformRoute
   CapabilitiesSlugRoute: typeof CapabilitiesSlugRoute
   CapabilitiesIndexRoute: typeof CapabilitiesIndexRoute
@@ -115,6 +128,13 @@ declare module '@tanstack/react-router' {
       path: '/knowledge-platform'
       fullPath: '/knowledge-platform'
       preLoaderRoute: typeof KnowledgePlatformRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/developer-platform': {
+      id: '/developer-platform'
+      path: '/developer-platform'
+      fullPath: '/developer-platform'
+      preLoaderRoute: typeof DeveloperPlatformRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/architecture': {
@@ -159,6 +179,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AiPlatformRoute: AiPlatformRoute,
   ArchitectureRoute: ArchitectureRoute,
+  DeveloperPlatformRoute: DeveloperPlatformRoute,
   KnowledgePlatformRoute: KnowledgePlatformRoute,
   CapabilitiesSlugRoute: CapabilitiesSlugRoute,
   CapabilitiesIndexRoute: CapabilitiesIndexRoute,
