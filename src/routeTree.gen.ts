@@ -14,6 +14,7 @@ import { Route as PackagesRouteImport } from './routes/packages'
 import { Route as OntologyRouteImport } from './routes/ontology'
 import { Route as KnowledgePlatformRouteImport } from './routes/knowledge-platform'
 import { Route as KnowledgeGraphRouteImport } from './routes/knowledge-graph'
+import { Route as GovernanceRouteImport } from './routes/governance'
 import { Route as ExperimentsRouteImport } from './routes/experiments'
 import { Route as EngineeringStandardsRouteImport } from './routes/engineering-standards'
 import { Route as DocsRouteImport } from './routes/docs'
@@ -48,6 +49,11 @@ const KnowledgePlatformRoute = KnowledgePlatformRouteImport.update({
 const KnowledgeGraphRoute = KnowledgeGraphRouteImport.update({
   id: '/knowledge-graph',
   path: '/knowledge-graph',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GovernanceRoute = GovernanceRouteImport.update({
+  id: '/governance',
+  path: '/governance',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ExperimentsRoute = ExperimentsRouteImport.update({
@@ -110,6 +116,7 @@ export interface FileRoutesByFullPath {
   '/docs': typeof DocsRoute
   '/engineering-standards': typeof EngineeringStandardsRoute
   '/experiments': typeof ExperimentsRoute
+  '/governance': typeof GovernanceRoute
   '/knowledge-graph': typeof KnowledgeGraphRoute
   '/knowledge-platform': typeof KnowledgePlatformRoute
   '/ontology': typeof OntologyRoute
@@ -127,6 +134,7 @@ export interface FileRoutesByTo {
   '/docs': typeof DocsRoute
   '/engineering-standards': typeof EngineeringStandardsRoute
   '/experiments': typeof ExperimentsRoute
+  '/governance': typeof GovernanceRoute
   '/knowledge-graph': typeof KnowledgeGraphRoute
   '/knowledge-platform': typeof KnowledgePlatformRoute
   '/ontology': typeof OntologyRoute
@@ -145,6 +153,7 @@ export interface FileRoutesById {
   '/docs': typeof DocsRoute
   '/engineering-standards': typeof EngineeringStandardsRoute
   '/experiments': typeof ExperimentsRoute
+  '/governance': typeof GovernanceRoute
   '/knowledge-graph': typeof KnowledgeGraphRoute
   '/knowledge-platform': typeof KnowledgePlatformRoute
   '/ontology': typeof OntologyRoute
@@ -164,6 +173,7 @@ export interface FileRouteTypes {
     | '/docs'
     | '/engineering-standards'
     | '/experiments'
+    | '/governance'
     | '/knowledge-graph'
     | '/knowledge-platform'
     | '/ontology'
@@ -181,6 +191,7 @@ export interface FileRouteTypes {
     | '/docs'
     | '/engineering-standards'
     | '/experiments'
+    | '/governance'
     | '/knowledge-graph'
     | '/knowledge-platform'
     | '/ontology'
@@ -198,6 +209,7 @@ export interface FileRouteTypes {
     | '/docs'
     | '/engineering-standards'
     | '/experiments'
+    | '/governance'
     | '/knowledge-graph'
     | '/knowledge-platform'
     | '/ontology'
@@ -216,6 +228,7 @@ export interface RootRouteChildren {
   DocsRoute: typeof DocsRoute
   EngineeringStandardsRoute: typeof EngineeringStandardsRoute
   ExperimentsRoute: typeof ExperimentsRoute
+  GovernanceRoute: typeof GovernanceRoute
   KnowledgeGraphRoute: typeof KnowledgeGraphRoute
   KnowledgePlatformRoute: typeof KnowledgePlatformRoute
   OntologyRoute: typeof OntologyRoute
@@ -260,6 +273,13 @@ declare module '@tanstack/react-router' {
       path: '/knowledge-graph'
       fullPath: '/knowledge-graph'
       preLoaderRoute: typeof KnowledgeGraphRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/governance': {
+      id: '/governance'
+      path: '/governance'
+      fullPath: '/governance'
+      preLoaderRoute: typeof GovernanceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/experiments': {
@@ -344,6 +364,7 @@ const rootRouteChildren: RootRouteChildren = {
   DocsRoute: DocsRoute,
   EngineeringStandardsRoute: EngineeringStandardsRoute,
   ExperimentsRoute: ExperimentsRoute,
+  GovernanceRoute: GovernanceRoute,
   KnowledgeGraphRoute: KnowledgeGraphRoute,
   KnowledgePlatformRoute: KnowledgePlatformRoute,
   OntologyRoute: OntologyRoute,
